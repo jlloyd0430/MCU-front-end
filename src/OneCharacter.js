@@ -12,14 +12,14 @@ function OneCharacter() {
   const [debutYearInput, setDebutYearInput] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:3001/api/getCharacterByName/${name}`).then(
-      async (res) => {
-        let result = await res.json();
-        setCharacter(result.payload);
-        setDebutInput(result.payload.debut);
-        setDebutYearInput(result.payload.debutYear);
-      }
-    );
+    fetch(
+      `https://mcu-back-end.onrender.com/api/getCharacterByName/${name}`
+    ).then(async (res) => {
+      let result = await res.json();
+      setCharacter(result.payload);
+      setDebutInput(result.payload.debut);
+      setDebutYearInput(result.payload.debutYear);
+    });
   }, [name, isEditing]);
 
   function toggleEditing() {
@@ -36,26 +36,32 @@ function OneCharacter() {
       debutYear: debutYearInput,
     };
 
-    fetch(`http://localhost:3001/api/updateCharacter/${character._id}`, {
-      method: "put",
-      headers: {
-        "Content-Type": "application/json",
-        "x-access-token": "token-value",
-      },
-      body: JSON.stringify(sendBody),
-    }).then(() => {
+    fetch(
+      `https://mcu-back-end.onrender.com/api/updateCharacter/${character._id}`,
+      {
+        method: "put",
+        headers: {
+          "Content-Type": "application/json",
+          "x-access-token": "token-value",
+        },
+        body: JSON.stringify(sendBody),
+      }
+    ).then(() => {
       setIsEditing(false);
     });
   }
 
   function handleDelete() {
-    fetch(`http://localhost:3001/api/deleteCharacter/${character._id}`, {
-      method: "delete",
-      headers: {
-        "Content-type": "application/json",
-        "x-access-token": "token-value",
-      },
-    }).then(() => {
+    fetch(
+      `https://mcu-back-end.onrender.com/api/deleteCharacter/${character._id}`,
+      {
+        method: "delete",
+        headers: {
+          "Content-type": "application/json",
+          "x-access-token": "token-value",
+        },
+      }
+    ).then(() => {
       navigate("/mcu");
     });
   }
