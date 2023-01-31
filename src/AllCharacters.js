@@ -6,7 +6,7 @@ function AllCharacters() {
   const [serverData, setServerData] = useState([]);
 
   useEffect(() => {
-    fetch("https://mcu-back-end.onrender.com/api/allCharacters").then(
+    fetch("https://mcu-back-end-sk7l.onrender.com/api/allCharacters").then(
       async (res) => {
         const data = await res.json();
 

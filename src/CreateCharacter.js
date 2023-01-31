@@ -15,7 +15,7 @@ function CreateCharacter() {
       debutYear: debutYear,
     };
 
-    fetch("https://mcu-back-end.onrender.com/api/createCharacter", {
+    fetch("https://mcu-back-end-sk7l.onrender.com/api/createCharacter", {
       method: "post",
       headers: {
         "Content-Type": "application/json",

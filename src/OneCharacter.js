@@ -13,7 +13,7 @@ function OneCharacter() {
 
   useEffect(() => {
     fetch(
-      `https://mcu-back-end.onrender.com/api/getCharacterByName/${name}`
+      `https://mcu-back-end-sk7l.onrender.com/api/getCharacterByName/${name}`
     ).then(async (res) => {
       let result = await res.json();
       setCharacter(result.payload);
@@ -37,7 +37,7 @@ function OneCharacter() {
     };
 
     fetch(
-      `https://mcu-back-end.onrender.com/api/updateCharacter/${character._id}`,
+      `https://mcu-back-end-sk7l.onrender.com/api/updateCharacter/${character._id}`,
       {
         method: "put",
         headers: {
@@ -53,7 +53,7 @@ function OneCharacter() {
 
   function handleDelete() {
     fetch(
-      `https://mcu-back-end.onrender.com/api/deleteCharacter/${character._id}`,
+      `https://mcu-back-end-sk7l.onrender.com/api/deleteCharacter/${character._id}`,
       {
         method: "delete",
         headers: {
