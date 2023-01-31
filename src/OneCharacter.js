@@ -6,14 +6,25 @@ function OneCharacter() {
 
   const navigate = useNavigate();
 
+  // character holds the initial MCU character document
   const [character, setCharacter] = useState({});
+  // handles the ability to edit or not
   const [isEditing, setIsEditing] = useState(false);
+  // these handle what is being edited
   const [debutInput, setDebutInput] = useState("");
   const [debutYearInput, setDebutYearInput] = useState("");
 
+  // runs when name is changed (when you initially arrive at this page) or if `isEditing` is changed, so you can immediately see changes once it's been edited
   useEffect(() => {
     fetch(
-      `https://mcu-back-end-sk7l.onrender.com/api/getCharacterByName/${name}`
+      `https://mcu-back-end-sk7l.onrender.com/api/getCharacterByName/${name}`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          "x-access-token": "token-value",
+          "Access-Control-Allow-Origin": "*",
+        },
+      }
     ).then(async (res) => {
       let result = await res.json();
       setCharacter(result.payload);
@@ -22,15 +33,18 @@ function OneCharacter() {
     });
   }, [name, isEditing]);
 
+  // Toggles the ability to edit. If editing is true, the details become input fields and the button to submit the form appears.
   function toggleEditing() {
     isEditing ? setIsEditing(false) : setIsEditing(true);
   }
 
+  // This runs when you submit the edited fields
   function handleOnSubmit(e) {
     e.preventDefault();
 
     console.log("Submitted!");
 
+    // prepares the changes being made to the document
     let sendBody = {
       debut: debutInput,
       debutYear: debutYearInput,
@@ -43,10 +57,12 @@ function OneCharacter() {
         headers: {
           "Content-Type": "application/json",
           "x-access-token": "token-value",
+          "Access-Control-Allow-Origin": "*",
         },
         body: JSON.stringify(sendBody),
       }
     ).then(() => {
+      // This will make the useEffect run so the page updates with the current character details
       setIsEditing(false);
     });
   }
@@ -57,8 +73,9 @@ function OneCharacter() {
       {
         method: "delete",
         headers: {
-          "Content-type": "application/json",
+          "Content-Type": "application/json",
           "x-access-token": "token-value",
+          "Access-Control-Allow-Origin": "*",
         },
       }
     ).then(() => {

@@ -20,6 +20,7 @@ function CreateCharacter() {
       headers: {
         "Content-Type": "application/json",
         "x-access-token": "token-value",
+        "Access-Control-Allow-Origin": "*",
       },
       body: JSON.stringify(newChar),
     }).then(async (res) => {
