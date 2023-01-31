@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 function OneCharacter() {
   const { name } = useParams();
+
+  const navigate = useNavigate();
 
   const [character, setCharacter] = useState({});
   const [isEditing, setIsEditing] = useState(false);
@@ -46,6 +48,18 @@ function OneCharacter() {
     });
   }
 
+  function handleDelete() {
+    fetch(`http://localhost:3001/api/deleteCharacter/${character._id}`, {
+      method: "delete",
+      headers: {
+        "Content-type": "application/json",
+        "x-access-token": "token-value",
+      },
+    }).then(() => {
+      navigate("/mcu");
+    });
+  }
+
   return (
     <>
       <h1>The character {character.name}</h1>
@@ -85,6 +99,7 @@ function OneCharacter() {
       <button onClick={toggleEditing}>
         {isEditing ? "Stop editing" : "Edit character details"}
       </button>
+      <button onClick={handleDelete}>Delete This Character</button>
     </>
   );
 }
