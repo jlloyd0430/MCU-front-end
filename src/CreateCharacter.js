@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { API_URL } from "./constants";
 
 function CreateCharacter() {
   const [name, setName] = useState("");
@@ -15,14 +16,14 @@ function CreateCharacter() {
       debutYear: debutYear,
     };
 
-    fetch("https://mcu-back-end-sk7l.onrender.com/api/createCharacter", {
+    fetch(`${API_URL}/createCharacter`, {
       method: "post",
+      body: JSON.stringify(newChar),
       headers: {
+        Accept: "application/json",
         "Content-Type": "application/json",
-        "x-access-token": "token-value",
         "Access-Control-Allow-Origin": "*",
       },
-      body: JSON.stringify(newChar),
     }).then(async (res) => {
       let serverResponse = await res.json();
       navigate(`/mcu/${serverResponse.payload.name}`);
