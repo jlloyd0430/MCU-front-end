@@ -1,11 +1,10 @@
 .App {
   text-align: center;
   color: white;
-    background-color: black;
-    font-family: 'Yeon Sung', cursive;
-    margin: 15px;
-    border-radius: 20px;
-    height: 1000px;
+  background-color: black;
+  margin: 10px;
+  border-radius: 20px;
+  height: 1000px;
 }
 
 .App-logo {
@@ -38,6 +37,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -54,6 +54,7 @@ nav h1 {
   margin: 20px;
   /* margin-top: 20px; */
   display: inline-block;
+  /* font-family: 'Yeon Sung', cursive; */
 
 }
 
