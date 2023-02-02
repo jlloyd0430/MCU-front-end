@@ -1,5 +1,11 @@
 .App {
   text-align: center;
+  color: white;
+    background-color: black;
+    font-family: 'Yeon Sung', cursive;
+    margin: 15px;
+    border-radius: 20px;
+    height: 1000px;
 }
 
 .App-logo {
@@ -35,4 +41,62 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+nav {
+  height: 85px;
+  border-bottom: solid rgb(203, 84, 24);
+}
+
+nav h1 {
+  font-size: 40px;
+  margin: 20px;
+  /* margin-top: 20px; */
+  display: inline-block;
+
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+  margin: 10px;
+  padding: 12px;
+
+  /* margin-top: 30px; */
+}
+
+a:hover {
+  color: rgb(203, 84, 24);
+}
+
+button {
+  background: black;
+  color: #fff;
+  text-align: center;
+  font-size: 20px;
+  margin: 20px;
+  border-radius: 11px;
+  padding: 20px;
+  border: solid 2px rgb(203, 84, 24);
+}
+
+button:hover {
+  border: solid 2px rgb(203, 84, 24);
+  background-color: rgb(203, 84, 24);
+
+}
+
+h1 {
+  text-align: center;
+}
+
+.selector {
+  margin: auto;
+  text-align: center;
+  border-radius: 11px;
+}
+
+.container {
+  text-align: center;
 }
